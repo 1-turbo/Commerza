@@ -8,7 +8,10 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="Repositries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Commerza.Core\Commerza.Core.csproj" />
   </ItemGroup>
 
 </Project>
