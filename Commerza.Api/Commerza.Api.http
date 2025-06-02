@@ -1,0 +1,6 @@
+@Commerza.Api_HostAddress = http://localhost:5217
+
+GET {{Commerza.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
