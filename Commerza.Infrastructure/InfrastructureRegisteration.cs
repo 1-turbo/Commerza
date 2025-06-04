@@ -8,8 +8,11 @@ namespace Commerza.Infrastructure
     {
         public static IServiceCollection infrastructureConfiguration(this IServiceCollection services)
         {
-            services.AddScoped(typeof(IGeneticRepositry<>), typeof(GeneticRepositry<>));
-            services.AddScoped<ICategoryRepositry, CategoryRepositry>();
+            //services.AddScoped(typeof(IGeneticRepositry<>), typeof(GeneticRepositry<>));
+            //services.AddScoped<ICategoryRepositry, CategoryRepositry>();
+            //services.AddScoped<IProductRepositry, ProductRepositry>();
+            //services.AddScoped<IPhotoRepositry, PhotoRepositry>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); 
             return services;
         }
     }
