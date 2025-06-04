@@ -10,6 +10,9 @@ namespace Commerza.Infrastructure.Data.Config
             builder.Property(x => x.Name).IsRequired();
             builder.Property(x => x.Description).IsRequired();
             builder.Property(x => x.Price).HasColumnType("decimal(18,2)");
+            builder.HasData(
+                new Product { Id = 1, Name = "test", Description = "test",CategoryID = 1, Price=12 }
+                );
         }
     }
 }
