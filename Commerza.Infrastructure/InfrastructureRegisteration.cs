@@ -1,18 +1,23 @@
 ﻿using Commerza.Core.Interfaces;
+using Commerza.Infrastructure.Data;
 using Commerza.Infrastructure.Repositries;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Commerza.Infrastructure
 {
     public static class InfrastructureRegisteration
     {
-        public static IServiceCollection infrastructureConfiguration(this IServiceCollection services)
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddScoped(typeof(IGeneticRepositry<>), typeof(GeneticRepositry<>));
-            //services.AddScoped<ICategoryRepositry, CategoryRepositry>();
-            //services.AddScoped<IProductRepositry, ProductRepositry>();
-            //services.AddScoped<IPhotoRepositry, PhotoRepositry>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>(); 
+            //apply Unit Of Work
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //apply DbContext
+            services.AddDbContext<AppDbContext>(op =>
+            {
+                op.UseSqlServer(configuration.GetConnectionString("EcomDatabase"));
+            });
             return services;
         }
     }

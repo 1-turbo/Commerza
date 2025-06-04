@@ -1,4 +1,4 @@
-
+using Commerza.Infrastructure;
 namespace Commerza.Api
 {
     public class Program
@@ -13,6 +13,7 @@ namespace Commerza.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddInfrastructureServices(builder.Configuration);
 
             var app = builder.Build();
 
