@@ -56,8 +56,39 @@ namespace Commerza.Api.Controllers
             }
             catch (Exception ex)
             {
-
-                throw;
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPut("update-category")]
+        public async Task<IActionResult> update(UpdateCategoryDTO categoryDTO)
+        {
+            try
+            {
+                var category = new Category()
+                {
+                    Description = categoryDTO.Description,
+                    Name = categoryDTO.Name,
+                    Id = categoryDTO.id
+                };
+                await work.CategoryRepositry.UpdateAsync(category);
+                return Ok(new { message = "Item has been updated" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpDelete("delete-category/{id}")]
+        public async Task<IActionResult> delete(int id)
+        {
+            try
+            {
+                await work.CategoryRepositry.DeleteAsync(id);
+                return Ok(new { message = "Item has been deleted" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
     }
